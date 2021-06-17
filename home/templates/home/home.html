@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% load static %}
+{% block title %}Live Alone{% endblock %}
+
+{% block content %}
+    <div class="row">
+    <div class="col">
+        <div style="text-align : center;">
+            <img src="{% static '배경화면.jpg' %}" width="700", height="500">
+        </div>
+        <br>
+        <div style="text-align: center;">
+        <button type="button" class="btn btn-outline-primary btn-lg" onclick="location.href='/shop/가구/'"># 가구</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-outline-secondary btn-lg" onclick="location.href='/shop/가전/'"># 가전</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-outline-success btn-lg" onclick="location.href='/shop/생필품/'"># 생필품</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-outline-danger btn-lg" onclick="location.href='/shop/생활/'"># 생활</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-outline-warning btn-lg" onclick="location.href='/shop/수납/'"># 수납</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-outline-info btn-lg" onclick="location.href='/shop/주방/'"># 주방</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-outline-dark btn-lg" onclick="location.href='/shop/패브릭/'"># 패브릭</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-light btn-lg" onclick="location.href='/shop/홈데코/'"># 홈데코</button>
+        </div>
+    </div>
+        {% endblock %}

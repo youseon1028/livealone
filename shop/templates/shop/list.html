@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% load static %}
+{% block title %}Product{% endblock %}
+
+{% block content %}
+    <div class="row">
+    <div class="col-2"> <!--col-2 : 2조각-->
+        <div class="list-group">
+            <a href="/" class="list-group-item {% if not current_category%} active {% endif %}">All</a>
+            {%for c in categories %}
+            <a href="{{c.get_absolute_url}}" class="list-group-item {% if current_category.slug == c.slug %}active{% endif %}">{{c.name}}</a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="col">
+        <div style="text-align : center;">
+            <img src="{% static '자취 일러스트.jpg' %}" width="700", height="500">
+        </div>
+        <div class="alert alert-info" role="alert">
+            {% if current_category %}{{current_category.name}}{% else %} All Products {% endif %}
+        </div>
+        <div class="row">
+            {% for product in products %}
+            <!-- col-4를 col-3으로 바꿔서 화면에 4개의 제품이 뜸 -->
+            <div class="col-3">
+                <div class="card">
+                    <!-- width='200px' height='200px'를 넣어서 사진의 크기를 고정함 -->
+                    <img class="card-img-top" src="{{product.image.url}}" width='200px' height='200px' alt="Product image">
+                    <div class="card-body">
+                        <h5 class="card-title">{{product.name}}</h5>
+                        <!-- |intcomma를 넣어서 금액에 , 표시가 들어가게 수정/$를 지우고, 뒤에 원 이라고 넣어서 원화 단위로 생성/br태그를 넣어서 금액이 설명 밑으로 가도록 수정 -->
+                        <p class="card-text">{{product.description}}<br><span class="badge badge-secondary">{{product.price|intcomma}}원</span></p>
+                        <a href="{{product.get_absolute_url}}" class="btn btn-primary">View Detail</a>
+                    </div>
+                </div>
+                <!-- br 태그를 넣어서 사진 열에 간격을 줌 -->
+                <br>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+        {% endblock %}
